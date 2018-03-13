@@ -20,6 +20,6 @@ Händer något roligt med ditt djur, tveka inte att posta det på PetShare App.
 
 **Planering (överblick)**
 1. Fas 1: *Research-fasen*
-  * Planerar och kategoriserar potentiella klasser, metoder och bibliotek efter bästa förmåga. I förra kursen så råkade jag på problem som troligtvis inte hade hänt om jag hade planerat bättre. Så i denna kurs kommer jag att försöka lägga mer fokus här. 
-1. Fas 2: *Kod-fasen*
-  * 
+   * Planerar och kategoriserar potentiella klasser, metoder och bibliotek efter bästa förmåga. I förra kursen så råkade jag på problem som troligtvis inte hade hänt om jag hade planerat bättre. Så i denna kurs kommer jag att försöka lägga mer fokus här. 
+2. Fas 2: *Kod-fasen*
+   * dsfds
