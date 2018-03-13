@@ -16,7 +16,7 @@ Händer något roligt med ditt djur, tveka inte att posta det på PetShare App.
 * Appen ska kunna hantera flera olika konton.
 * Användaren ska kunna lägga upp en bild. Ifall bilden är för stor eller för liten så ska den justeras automatiskt för att passa mobilens storlek. 
 * Användaren ska kunna lägga upp text i ett “nyhetsflöde”, som sparas automatiskt.
-* När användaren lämnar appen och går tillbaka till den så ska all data finnas kvar.
+* När användaren lämnar appen och går tillbaka till den så ska all data finnas kvar. För att uppfylla detta kommer appen att använda sig av Firebase (databaser). 
 
 ### Planering (överblick)
 1. *Research-fasen*
