@@ -31,6 +31,20 @@ public class MainActivity extends AppCompatActivity
     private DatabaseReference fieldDatabaseReference;
 
     @Override
+    protected void onStart()
+    {
+        fieldFirebaseAuth.addAuthStateListener(fieldFirebaseAuthStateListener);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop()
+    {
+        fieldFirebaseAuth.removeAuthStateListener(fieldFirebaseAuthStateListener);
+        super.onStop();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
