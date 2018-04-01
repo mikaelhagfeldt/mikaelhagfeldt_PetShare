@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -22,6 +24,11 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth fieldFirebaseAuth;
     private FirebaseAuth.AuthStateListener fieldFirebaseAuthStateListener;
     private FirebaseUser fieldFirebaseUser;
+
+    // Ett enkelt test för att kolla att allting fungerar
+
+    private FirebaseDatabase fieldDatabase;
+    private DatabaseReference fieldDatabaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -57,6 +64,11 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         };
+
+        // Enkelt test för att se att allting fungerar
+        fieldDatabase = FirebaseDatabase.getInstance();
+        fieldDatabaseReference = fieldDatabase.getReference("Test Node");
+        fieldDatabaseReference.setValue("Test Value");
     }
 
 }
