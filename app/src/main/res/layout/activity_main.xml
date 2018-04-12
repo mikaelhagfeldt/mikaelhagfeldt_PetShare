@@ -16,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textEmailAddress"/>
 
     <EditText
@@ -27,6 +28,7 @@
         android:layout_below="@+id/id_editText_email"
         android:layout_marginTop="28dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"/>
 
     <Button

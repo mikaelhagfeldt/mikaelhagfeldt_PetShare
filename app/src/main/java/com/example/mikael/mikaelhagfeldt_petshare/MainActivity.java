@@ -3,10 +3,17 @@ package com.example.mikael.mikaelhagfeldt_petshare;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +36,11 @@ public class MainActivity extends AppCompatActivity
 
     private FirebaseDatabase fieldDatabase;
     private DatabaseReference fieldDatabaseReference;
+
+    /*
+        Kopplar FirebaseAuthStateListener till FirebaseAuth när applikationen startar, och tar bort
+        den då applikationen avslutas. För att undvika framtida problem.
+     */
 
     @Override
     protected void onStart()
@@ -83,6 +95,63 @@ public class MainActivity extends AppCompatActivity
         fieldDatabase = FirebaseDatabase.getInstance();
         fieldDatabaseReference = fieldDatabase.getReference("Test Node");
         fieldDatabaseReference.setValue("Test Value");
+
+        /*
+            Logik för "Login" knappen
+         */
+
+        fieldButtonLogin.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                if (TextUtils.isEmpty(fieldEditTextEmail.getText().toString()))
+                {
+                    Toast.makeText(MainActivity.this, "Error. Email and password has empty fields.", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    String strEmail = fieldEditTextEmail.getText().toString();
+                    String strPassword = fieldEditTextPassword.getText().toString();
+                    loginMethod(strEmail, strPassword);
+                }
+            }
+        });
     }
 
+    public void loginMethod(String strParam1, String strParam2)
+    {
+        fieldFirebaseAuth.signInWithEmailAndPassword(strParam1, strParam2).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+        {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task)
+            {
+                if (task.isSuccessful())
+                {
+                    Toast.makeText(MainActivity.this, "Task successful.", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "Error. Task failed.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu_one, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if (item.getItemId() == R.id.menu_signout)
+        {
+            fieldFirebaseAuth.signOut();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
