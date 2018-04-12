@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".AfterListManagement">
         </activity>
+        <activity android:name=".SubmitNewPost">
+        </activity>
     </application>
 
 </manifest>
