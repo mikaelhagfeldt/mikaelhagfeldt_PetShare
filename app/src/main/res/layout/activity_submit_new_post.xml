@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SubmitNewPost">
+    tools:context="com.example.mikael.mikaelhagfeldt_petshare.SubmitNewPostActivity">
 
     <ImageButton
+        android:id="@+id/id_addpost_imageButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/id_submitnewpost_imageButton"
-        android:src="@drawable/ic_launcher_background"/>
+        app:srcCompat="@android:drawable/ic_menu_report_image"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="84dp"/>
 
     <EditText
-        android:id="@+id/id_submitnewpost_editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="153dp"
-        android:ems="10"
-        android:hint="Enter title . . ."
-        android:inputType="textPersonName"/>
-
-    <EditText
-        android:id="@+id/id_submitnewpost_editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="219dp"
-        android:ems="10"
-        android:hint="Enter text . . ."
-        android:inputType="textPersonName"
-        />
-
-    <Button
-        android:id="@+id/id_submitnewpost_button1"
+        android:id="@+id/id_addpost_editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="164dp"
-        android:text="Submit"/>
+        android:layout_marginBottom="209dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="Post Title . . ."
+        android:inputType="textPersonName"
+        android:padding="15dp"/>
+
+    <EditText
+        android:id="@+id/id_addpost_editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="139dp"
+        android:background="@drawable/outline"
+        android:ems="10"
+        android:hint="Post Description . . ."
+        android:inputType="textPersonName"
+        android:padding="15dp"/>
+
+    <Button
+        android:id="@+id/id_addpost_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="72dp"
+        android:text="Add Post"/>
 
 </RelativeLayout>

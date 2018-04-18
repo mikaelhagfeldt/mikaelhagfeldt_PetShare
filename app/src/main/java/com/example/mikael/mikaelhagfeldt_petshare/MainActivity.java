@@ -1,5 +1,6 @@
 package com.example.mikael.mikaelhagfeldt_petshare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,45 +17,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
 {
-    // Basic deklarationer
-
-    private EditText fieldEditTextEmail;
-    private EditText fieldEditTextPassword;
     private Button fieldButtonLogin;
     private Button fieldButtonCreateNewAcc;
+    private EditText fieldEditTextEmail;
+    private EditText fieldEditTextPassword;
 
     private FirebaseAuth fieldFirebaseAuth;
     private FirebaseAuth.AuthStateListener fieldFirebaseAuthStateListener;
     private FirebaseUser fieldFirebaseUser;
-
-    // Ett enkelt test för att kolla att allting fungerar
-
-    private FirebaseDatabase fieldDatabase;
-    private DatabaseReference fieldDatabaseReference;
-
-    /*
-        Kopplar FirebaseAuthStateListener till FirebaseAuth när applikationen startar, och tar bort
-        den då applikationen avslutas. För att undvika framtida problem.
-     */
-
-    @Override
-    protected void onStart()
-    {
-        fieldFirebaseAuth.addAuthStateListener(fieldFirebaseAuthStateListener);
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop()
-    {
-        fieldFirebaseAuth.removeAuthStateListener(fieldFirebaseAuthStateListener);
-        super.onStop();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -62,27 +35,30 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fieldEditTextEmail = findViewById(R.id.id_editText_email);
-        fieldEditTextPassword = findViewById(R.id.id_editText_password);
-        fieldButtonLogin = findViewById(R.id.id_button_login);
-        fieldButtonCreateNewAcc = findViewById(R.id.id_button_createNewAcc);
+        fieldButtonLogin = findViewById(R.id.id_main_buttonLogin);
+        fieldButtonCreateNewAcc = findViewById(R.id.id_main_buttonCreateAcc);
+        fieldEditTextEmail = findViewById(R.id.id_main_editTextEmail);
+        fieldEditTextPassword = findViewById(R.id.id_main_editTextPassw);
 
         fieldFirebaseAuth = FirebaseAuth.getInstance();
-
-        // En metod som "lyssnar efter" förändringar för den nuvarande användaren
-
         fieldFirebaseAuthStateListener = new FirebaseAuth.AuthStateListener()
         {
+            /*
+                En metod som "lyssnar efter" förändringar i databasens "authentification state". Ifall
+                användaren är inloggad så skapas en intent som tar användaren vidare till nästa sida.
+                Ifall användaren inte är inloggad så skickas ett felmeddelande.
+             */
+
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth)
             {
                 fieldFirebaseUser = fieldFirebaseAuth.getCurrentUser();
 
-                // Ett sätt för mig som utvecklare att hålla reda på värdet för fieldFirebaseUser
-
                 if (fieldFirebaseUser != null)
                 {
                     Toast.makeText(MainActivity.this, "FirebaseUser is not null", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(MainActivity.this, AfterListManagementActivity.class));
+                    finish();
                 }
                 else
                 {
@@ -91,52 +67,56 @@ public class MainActivity extends AppCompatActivity
             }
         };
 
-        // Enkelt test för att se att allting fungerar
-        fieldDatabase = FirebaseDatabase.getInstance();
-        fieldDatabaseReference = fieldDatabase.getReference("Test Node");
-        fieldDatabaseReference.setValue("Test Value");
-
-        /*
-            Logik för "Login" knappen
-         */
+        // Logik då användaren försöker logga in.
 
         fieldButtonLogin.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View view)
+            public void onClick(View v)
             {
-                if (TextUtils.isEmpty(fieldEditTextEmail.getText().toString()))
+                if (TextUtils.isEmpty(fieldEditTextEmail.getText().toString()) && TextUtils.isEmpty(fieldEditTextPassword.getText().toString()))
                 {
-                    Toast.makeText(MainActivity.this, "Error. Email and password has empty fields.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Error. Email and Password has empty fields.", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
                     String strEmail = fieldEditTextEmail.getText().toString();
                     String strPassword = fieldEditTextPassword.getText().toString();
-                    loginMethod(strEmail, strPassword);
+                    login(strEmail, strPassword);
                 }
             }
         });
+
     }
 
-    public void loginMethod(String strParam1, String strParam2)
+    /*
+        Logik för själva "inloggningen". Användaren loggar in med användarnamn och lösenord, och påkallar
+        en OnCompleteListener för att berätta för användaren om man lyckades med det eller inte. Dvs genom
+        Toast meddelanden i detta fall.
+     */
+
+    private void login(String strEmail, String strPassword)
     {
-        fieldFirebaseAuth.signInWithEmailAndPassword(strParam1, strParam2).addOnCompleteListener(new OnCompleteListener<AuthResult>()
+        fieldFirebaseAuth.signInWithEmailAndPassword(strEmail, strPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>()
         {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task)
             {
                 if (task.isSuccessful())
                 {
-                    Toast.makeText(MainActivity.this, "Task successful.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Success. You signed in.", Toast.LENGTH_LONG).show();
+
+                    startActivity(new Intent(MainActivity.this, AfterListManagementActivity.class));
                 }
                 else
                 {
-                    Toast.makeText(MainActivity.this, "Error. Task failed.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Error. Could not log in.", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
+
+    // Metoder för att få menyn att fungera korrekt.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -148,10 +128,33 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if (item.getItemId() == R.id.menu_signout)
+        if (item.getItemId() == R.id.id_menu_signout)
         {
             fieldFirebaseAuth.signOut();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /*
+        När applikationen startas kopplas FirebaseAuthStateListener till FirebaseAuth. Då appen
+        avslutas tar man bort denna koppling, dvs så länge inte FirebaseAuthStateListener redan är
+        null.
+     */
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        fieldFirebaseAuth.addAuthStateListener(fieldFirebaseAuthStateListener);
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        if (fieldFirebaseAuthStateListener != null)
+        {
+            fieldFirebaseAuth.removeAuthStateListener(fieldFirebaseAuthStateListener);
+        }
     }
 }

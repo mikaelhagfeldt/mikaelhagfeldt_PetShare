@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AfterListManagement">
+    tools:context="com.example.mikael.mikaelhagfeldt_petshare.AfterListManagementActivity">
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/id_afterlistmanagement_recyclerView">
+        android:id="@+id/id_recyclerView">
     </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

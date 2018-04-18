@@ -7,44 +7,43 @@
     android:layout_height="match_parent"
     tools:context="com.example.mikael.mikaelhagfeldt_petshare.MainActivity">
 
-
     <EditText
-        android:id="@+id/id_editText_email"
+        android:id="@+id/id_main_editTextEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="106dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"/>
 
     <EditText
-        android:id="@+id/id_editText_password"
+        android:id="@+id/id_main_editTextPassw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/id_editText_email"
-        android:layout_alignStart="@+id/id_editText_email"
-        android:layout_below="@+id/id_editText_email"
-        android:layout_marginTop="28dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"/>
 
     <Button
-        android:id="@+id/id_button_login"
+        android:id="@+id/id_main_buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginBottom="160dp"
         android:text="Login"/>
 
     <Button
-        android:id="@+id/id_button_createNewAcc"
+        android:id="@+id/id_main_buttonCreateAcc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/id_button_login"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
+        android:layout_marginBottom="87dp"
         android:text="Create New Account"/>
 </RelativeLayout>

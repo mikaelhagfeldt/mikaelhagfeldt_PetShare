@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AfterListManagement">
+        <activity android:name=".AfterListManagementActivity">
         </activity>
-        <activity android:name=".SubmitNewPost">
+        <activity android:name=".SubmitNewPostActivity">
         </activity>
     </application>
 

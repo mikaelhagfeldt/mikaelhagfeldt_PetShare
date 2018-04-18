@@ -2,8 +2,8 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-    android:layout_margin="7dp"
-    android:orientation="vertical">
+                                    android:layout_margin="5dp"
+                                    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,30 +15,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/id_cardviewafterrow_imageView"
+            android:src="@drawable/ic_launcher_background"
             android:adjustViewBounds="true"
-            android:src="@color/cardview_dark_background"
+            android:cropToPadding="false"
             android:scaleType="centerCrop"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:text="Title . . ."
+            android:text="Enter Title . . ."
             android:textStyle="bold"
             android:id="@+id/id_cardviewafterrow_textView1"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:text="Random Text . . ."
+            android:textSize="17dp"
+            android:text="Enter Description . . ."
             android:id="@+id/id_cardviewafterrow_textView2"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="13dp"
-            android:text="Date: . . ."
+            android:textSize="15dp"
+            android:text="Created: "
             android:textStyle="italic"
             android:id="@+id/id_cardviewafterrow_textView3"/>
 

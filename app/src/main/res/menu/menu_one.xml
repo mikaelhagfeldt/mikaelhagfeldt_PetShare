@@ -5,7 +5,13 @@
     <item
         android:title="Sign Out"
         app:showAsAction="always"
-        android:id="@+id/menu_signout"
-        />
+        android:id="@+id/id_menu_signout"
+        ></item>
+
+    <item
+        android:title="Add New"
+        app:showAsAction="always"
+        android:id="@+id/id_menu_addnew"
+        ></item>
 
 </menu>
