@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="106dp"
+        android:layout_marginTop="185dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"/>
@@ -22,28 +22,39 @@
         android:id="@+id/id_main_editTextPassw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
+        android:layout_marginBottom="222dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/id_main_buttonLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="32dp"
         android:text="Login"/>
 
     <Button
         android:id="@+id/id_main_buttonCreateAcc"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="87dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="88dp"
         android:text="Create New Account"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:text="Welcome to PetShare"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+
 </RelativeLayout>

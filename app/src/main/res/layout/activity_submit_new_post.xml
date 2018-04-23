@@ -11,10 +11,13 @@
     <ImageButton
         android:id="@+id/id_addpost_imageButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_report_image"
+        android:layout_height="200dp"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
         tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="84dp"/>
+        tools:layout_editor_absoluteY="84dp"
+        android:layout_margin="7dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"/>
 
     <EditText
         android:id="@+id/id_addpost_editText1"
@@ -48,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="43dp"
         android:text="Add Post"/>
 
 </RelativeLayout>

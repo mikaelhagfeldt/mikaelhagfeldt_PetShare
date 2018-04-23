@@ -18,7 +18,8 @@
             android:src="@drawable/ic_launcher_background"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:padding="15dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -26,14 +27,16 @@
             android:textSize="20dp"
             android:text="Enter Title . . ."
             android:textStyle="bold"
-            android:id="@+id/id_cardviewafterrow_textView1"/>
+            android:id="@+id/id_cardviewafterrow_textView1"
+            android:padding="7dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="17dp"
             android:text="Enter Description . . ."
-            android:id="@+id/id_cardviewafterrow_textView2"/>
+            android:id="@+id/id_cardviewafterrow_textView2"
+            android:padding="7dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -41,7 +44,8 @@
             android:textSize="15dp"
             android:text="Created: "
             android:textStyle="italic"
-            android:id="@+id/id_cardviewafterrow_textView3"/>
+            android:id="@+id/id_cardviewafterrow_textView3"
+            android:padding="7dp"/>
 
     </LinearLayout>
 

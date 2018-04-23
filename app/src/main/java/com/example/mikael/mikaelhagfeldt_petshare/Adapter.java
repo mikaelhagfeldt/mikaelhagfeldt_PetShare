@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.Date;
 import java.util.List;
 
@@ -52,13 +54,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>
         String strImageURL = null;
 
         holder.textViewTitle.setText(blog.getFieldStrTitle());
-        holder.textViewDescripton.setText(blog.getFieldStrDescription());
-        holder.textViewTimeStamp.setText(blog.getFieldStrTimeStamp());
+        holder.textViewDescripton.setText(blog.getFieldStrRandomText());
+
 
         java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance();
-        String strFormattedDate = dateFormat.format(new Date(Long.valueOf(blog.getFieldStrTimeStamp())).getTime());
+        String strHumanReadableDate = dateFormat.format(new Date(Long.valueOf(blog.getFieldStrDateTime())).getTime());
+        holder.textViewTimeStamp.setText(strHumanReadableDate);
 
-        strImageURL = blog.getFieldStrImage();
+        strImageURL = blog.getFieldStrImageText();
+
+        Picasso.get().load(strImageURL).into(holder.imageViewImage);
+
     }
 
     @Override

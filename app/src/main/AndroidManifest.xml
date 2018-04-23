@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".SubmitNewPostActivity">
         </activity>
+        <activity android:name=".CreateNewAccActivity">
+        </activity>
     </application>
 
 </manifest>

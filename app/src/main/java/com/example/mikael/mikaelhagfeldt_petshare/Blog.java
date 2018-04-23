@@ -9,9 +9,9 @@ package com.example.mikael.mikaelhagfeldt_petshare;
 public class Blog
 {
     private String fieldStrTitle;
-    private String fieldStrDescription;
-    private String fieldStrImage;
-    private String fieldStrTimeStamp;
+    private String fieldStrRandomText;
+    private String fieldStrImageText;
+    private String fieldStrDateTime;
     private String fieldStrUserID;
 
     public Blog()
@@ -19,12 +19,12 @@ public class Blog
 
     }
 
-    public Blog(String fieldStrTitle, String fieldStrDescription, String fieldStrImage, String fieldStrTimeStamp, String fieldStrUserID)
+    public Blog(String fieldStrTitle, String fieldStrRandomText, String fieldStrImageText, String fieldStrDateTime, String fieldStrUserID)
     {
         this.fieldStrTitle = fieldStrTitle;
-        this.fieldStrDescription = fieldStrDescription;
-        this.fieldStrImage = fieldStrImage;
-        this.fieldStrTimeStamp = fieldStrTimeStamp;
+        this.fieldStrRandomText = fieldStrRandomText;
+        this.fieldStrImageText = fieldStrImageText;
+        this.fieldStrDateTime = fieldStrDateTime;
         this.fieldStrUserID = fieldStrUserID;
     }
 
@@ -38,34 +38,34 @@ public class Blog
         this.fieldStrTitle = fieldStrTitle;
     }
 
-    public String getFieldStrDescription()
+    public String getFieldStrRandomText()
     {
-        return fieldStrDescription;
+        return fieldStrRandomText;
     }
 
-    public void setFieldStrDescription(String fieldStrDescription)
+    public void setFieldStrRandomText(String fieldStrRandomText)
     {
-        this.fieldStrDescription = fieldStrDescription;
+        this.fieldStrRandomText = fieldStrRandomText;
     }
 
-    public String getFieldStrImage()
+    public String getFieldStrImageText()
     {
-        return fieldStrImage;
+        return fieldStrImageText;
     }
 
-    public void setFieldStrImage(String fieldStrImage)
+    public void setFieldStrImageText(String fieldStrImageText)
     {
-        this.fieldStrImage = fieldStrImage;
+        this.fieldStrImageText = fieldStrImageText;
     }
 
-    public String getFieldStrTimeStamp()
+    public String getFieldStrDateTime()
     {
-        return fieldStrTimeStamp;
+        return fieldStrDateTime;
     }
 
-    public void setFieldStrTimeStamp(String fieldStrTimeStamp)
+    public void setFieldStrDateTime(String fieldStrDateTime)
     {
-        this.fieldStrTimeStamp = fieldStrTimeStamp;
+        this.fieldStrDateTime = fieldStrDateTime;
     }
 
     public String getFieldStrUserID()
